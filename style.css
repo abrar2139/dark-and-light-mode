@@ -10,50 +10,194 @@ body{
     height: 100vh;
     width: 100%;
     transition: all 5s linear;
+    background:linear-gradient(lightskyblue,white);
 }
+.content{
+  transition: all 5s linear;
+}
+.cursor{
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background-color:lightskyblue;
+  position: absolute;
+  transition: all .2s linear;
+  mix-blend-mode: difference;
+}
+.cloud {
+  display:inline-block;
+  background:white;
+  width:120px;
+  height:120px; 
+  border-radius:50%;
+  position:relative;
+  top:-30px;
+  filter: blur(6px);
+  z-index:99999;
+  left:-50px;
+  animation: 15000ms cloudAnimation linear infinite;
+  opacity:0.76;
+}
+.cloud:before {
+  content:"";
+  display:inline-block;
+  background:white;
+  width:100px;
+  height:100px; 
+  filter: blur(3px);
+  position:relative;
+  border-radius:50%;
+  top:-30px;
+  left:60px;
+}
+.cloud:after {
+  content:"";
+  display:inline-block;
+  background:white;
+  width:200px;
+  height:100px; 
+  filter: blur(3px);
+  position:relative;
+  border-radius:50%;
+  top:-80px;
+  left:70px;
+}
+
+.cloud:first-child {zoom:1.5;}
+
+@keyframes cloudAnimation {
+  0%{
+    transform: translate(-100px,0);
+  }
+  100% {
+    transform: translate(600px,0);
+  }
+}
+
+
+.star{
+  display: none;
+
+}
+.parent-star1{
+  position: absolute;
+  right: 1%;
+  top: 20%;
+}
+.parent-star2{
+  position: absolute;
+  right: 20%;
+  top: 45%;
+}
+.parent-star3{
+  position: absolute;
+  left: 63%;
+  top: 10%;
+}
+.parent-star4{
+  position: absolute;
+  left: 20%;
+  top: 25%;
+}
+.parent-star5{
+  position: absolute;
+  left: 5%;
+  top: 1%;
+}
+.five-pointed-star {
+  --star-color: white;
+  margin: 1em auto;
+  font-size: .8em;
+  position: relative;
+  display: block;
+  width: 0px;
+  height: 0px;
+  border-right: 1em solid transparent;
+  border-bottom: 0.7em solid var(--star-color);
+  border-left: 1em solid transparent;
+  transform: rotate(35deg);
+  /* box-shadow: 0 0 20px 5px rgba(255, 165, 0, 0.7);  */
+}
+
+.five-pointed-star:before {
+  border-bottom: 0.8em solid var(--star-color);
+  border-left: 0.3em solid transparent;
+  border-right: 0.3em solid transparent;
+  position: absolute;
+  height: 0;
+  width: 0;
+  top: -0.45em;
+  left: -0.65em;
+  display: block;
+  content: "";
+  transform: rotate(-35deg);
+}
+
+.five-pointed-star:after {
+  position: absolute;
+  display: block;
+  top: 0.03em;
+  left: -1.05em;
+  width: 0;
+  height: 0;
+  border-right: 1em solid transparent;
+  border-bottom: 0.7em solid var(--star-color);
+  border-left: 1em solid transparent;
+  transform: rotate(-70deg);
+  content: "";
+}
+
 
 .main{
     height: 100vh;
-    width: 50%;
+    width: 100%;
     display: flex;
     flex-direction: column;
 align-items: center;
 position: relative;
 }
 .circle{
-background-color: transparent;
-    height: 300px;
-    width: 300px;
+  position: relative;
+  z-index: 9999;
+background-color: orange;
+    height: 150px;
+    width: 150px;
     border-radius: 50%;
     border: 2px solid yellow;
     margin-top: 10px;
-    transition: all 3s linear;
+    transition: background-color 3s linear;
+    box-shadow: 0 0 10px orange,
+              0 0 60px orange,
+              0 0 200px orange,
+              inset 0 0 80px orange;
 }
 button{
   position: absolute;
   bottom: 0;
   left: 50%;
   transform: translate(-50%);
-    padding: 12px 28px;  
+    padding: 8px 28px;  
     font-size: 20px;
     font-weight: 900;
     border-radius: 20px;
-    border: 5px solid brown;
-    color: brown;
+    border: 5px solid black;
+    color: black;
     cursor: pointer;
+    background-color: white;
 }
 .sun {
 
+display: none;
     border-radius:50%;
-    height:100px;
-    width:100px;
+    height:70px;
+    width:70px;
     background:orange;
     box-shadow: 0 0 10px orange,
                   0 0 60px orange,
                   0 0 200px yellow,
                   inset 0 0 80px yellow;
     z-index:999;
-    animation:round 60s linear  infinite;
+    animation:round 30s linear  infinite;
     position: absolute;
     /* top: 50%;
     left: 50%; */
@@ -62,30 +206,30 @@ button{
   }
   @keyframes round {
     0% {
-      top: 0;
-      left: 92%;
+      top: 5%;
+      left: 75%;
     }
     25% {
-      top: 0;
-      left: 0;
+      top: 5%;
+      left: 5%;
       /* transform: scale(1.1); */
 
     }
     50% {
-      top: 83%;
-      left: 0;
+      top: 80%;
+      left: 5%;
       /* transform: scale(1.2); */
 
     }
     75% {
-      top: 83%;
-      left: 92%;
+      top: 80%;
+      left: 75%;
       /* transform: scale(1.3); */
 
     }
     100% {
-      top: 0;
-      left: 92%;
+      top: 5%;
+      left: 75%;
       /* transform: scale(1.4); */
 
     }
